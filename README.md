@@ -1,0 +1,2 @@
+# rextrader
+Bittrex API wrapper
