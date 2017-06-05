@@ -12,13 +12,13 @@ marketApiUrl=apiUrl+'/market/'
 accountApiUr=apiUrl+'/account/'
 
 # PUBLIC API
-# https://bittrex.com/api/v1.1/public/getmarkets    
-# https://bittrex.com/api/v1.1/public/getcurrencies    
-# https://bittrex.com/api/v1.1/public/getticker    
-# https://bittrex.com/api/v1.1/public/getmarketsummaries    
-# https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc    
-# https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-LTC&type=both&depth=50    
-# https://bittrex.com/api/v1.1/public/getmarkethistory?market=BTC-DOGE 
+# https://bittrex.com/api/v1.1/public/getmarkets
+# https://bittrex.com/api/v1.1/public/getcurrencies
+# https://bittrex.com/api/v1.1/public/getticker
+# https://bittrex.com/api/v1.1/public/getmarketsummaries
+# https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc
+# https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-LTC&type=both&depth=50
+# https://bittrex.com/api/v1.1/public/getmarkethistory?market=BTC-DOGE
 
 ##### USE data,params and headers #####
 
@@ -102,7 +102,7 @@ class publicRex:
 
         ticker=ticker1+"-"+ticker2
         data= {"market": ticker}
-        req = requests.get(self.public_urls["getticker"], data=data)
+        req = requests.get(self.public_urls["getmarketsummary"], data=data)
         json = req.json()
         return self.process(json)
 
@@ -116,8 +116,8 @@ class publicRex:
             return
 
         ticker=ticker1+"-"+ticker2
-        data= {"market": ticker, "type": type, "depth": depth}
-        req = requests.get(self.public_urls["getticker"], data=data)
+        data= {"market": ticker, "type": ordertype, "depth": depth}
+        req = requests.get(self.public_urls["getorderbook"], data=data)
         json = req.json()
         return self.process(json)
         
@@ -128,8 +128,7 @@ class publicRex:
 
         ticker=ticker1+"-"+ticker2
         data= {"market": ticker}
-        print data
-        req = requests.get(self.public_urls["getticker"], data=data)
+        req = requests.get(self.public_urls["getmarkethistory"], data=data)
         json = req.json()
         return self.process(json)
 
@@ -140,3 +139,17 @@ ret, msg = p.getticker("BTC", "LTC")
 ret, msg = p.getmarketsummaries()
 ret, msg = p.getmarketsummary("BTC", "LTC")
 ret, msg = p.getorderbook("BTC", "LTC", "buy")
+ret,msg = p.getmarkethistory("BTC", "LTC")
+
+
+# https://bittrex.com/api/v1.1/public/getmarkethistory?market=BTC-DOGE
+
+#p = privateRex(accountApiUrl, key)
+#ret, msg = p.getbalances()
+#ret, msg = p.getbalance()
+#ret, msg = p.getdepositaddress()
+#ret, msg = p.withdraw()
+#ret, msg = p.getorder()
+#ret, msg = p.getorderhistory()
+#ret, msg = p.getwithdrawalhistory()
+#ret, msg = p.getdeposithistory()
