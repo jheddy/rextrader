@@ -79,7 +79,7 @@ class publicRex:
         json = req.json()
         return self.process(json)
 
-    def getticker(self, ticker1="", ticker2=""):
+    def getticker(self, ticker1="BTC", ticker2=""):
         if len(ticker1) == 0 or len(ticker2) == 0:
             print "getticker: pass a valid ticker pair"
             return
@@ -95,7 +95,7 @@ class publicRex:
         json = req.json()
         return self.process(json)
 
-    def getmarketsummary(self, ticker1="", ticker2=""):
+    def getmarketsummary(self, ticker1="BTC", ticker2=""):
         if len(ticker1) == 0 or len(ticker2) == 0:
             print "getticker: pass a valid ticker pair"
             return
@@ -106,7 +106,7 @@ class publicRex:
         json = req.json()
         return self.process(json)
 
-    def getorderbook(self, ticker1="", ticker2="", ordertype="", depth=1):
+    def getorderbook(self, ticker1="BTC", ticker2="", ordertype="", depth=1):
         if len(ticker1) == 0 or len(ticker2) == 0:
             print "getticker: pass a valid ticker pair"
             return
@@ -121,7 +121,7 @@ class publicRex:
         json = req.json()
         return self.process(json)
         
-    def getmarkethistory(self, ticker1="", ticker2=""):
+    def getmarkethistory(self, ticker1="BTC", ticker2=""):
         if len(ticker1) == 0 or len(ticker2) == 0:
             print "getticker: pass a valid ticker pair"
             return
